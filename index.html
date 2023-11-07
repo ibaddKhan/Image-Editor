@@ -15,14 +15,14 @@
     />
   </head>
   <body>
-    <div class="container">
+    <div class="container disable">
       <h2 class="heading">Photo Editor By me</h2>
       <div class="main">
         <div class="panel">
           <div class="filters">
             <label class="title">Filters</label>
             <div class="options">
-              <button>Brightness</button>
+              <button class="active">Brightness</button>
               <button>Saturation</button>
               <button>Inversion</button>
               <button>Grayscale</button>
@@ -32,7 +32,7 @@
                 <p class="name">Brightness</p>
                 <p class="value">100%</p>
               </div>
-              <input type="range" value="100" min="0" max="200" />
+              <input class="range" type="range" value="100" min="0" max="200" />
             </div>
           </div>
           <div class="rotate">
@@ -52,10 +52,13 @@
       <div class="controls">
         <button class="reset">Reset Changes</button>
         <div class="row">
-          <button class="Select">Select Image</button>
-          <button class="Download">Download Image</button>
+          <input type="file" class="file-input" accept="image/*" hidden />
+          <button class="select">Select Image</button>
+          <!-- <input type="file" class="file-input" /> -->
+          <button class="download">Download Image</button>
         </div>
       </div>
     </div>
+    <script src="script.js"></script>
   </body>
 </html>
