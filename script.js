@@ -143,7 +143,6 @@ RotateBtn.forEach((item) => {
 });
 
 const saveImage = () => {
-  console.log("img");
   const canvas = document.createElement("canvas");
   const ctx = canvas.getContext("2d");
   canvas.width = preview.naturalWidth;
@@ -162,10 +161,10 @@ const saveImage = () => {
     canvas.width,
     canvas.height
   );
-
+  const dataURL = canvas.toDataURL("image/jpeg");
   const link = document.createElement("a");
-  link.download = "image.jpg";
-  link.href = canvas.toDataURL();
+  link.download = "Edited_img ByIbad.jpg";
+  link.href = dataURL;
   link.click();
 };
 
