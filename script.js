@@ -15,10 +15,14 @@ let selectedFilter = document.querySelector(".options .active");
 let brightness = 100,
   saturation = 100,
   inversion = 0,
-  grayscale = 0;
-rotate = 0;
-flipH = 1;
-flipY = 1;
+  opacity = 100,
+  contrast = 100,
+  hue = 0,
+  sepia = 0,
+  grayscale = 0,
+  rotate = 0,
+  flipH = 1,
+  flipY = 1;
 
 const loadImg = () => {
   let file = fileInput.files[0];
@@ -48,7 +52,7 @@ preview.addEventListener("click", () => {
 });
 const applyFilters = () => {
   preview.style.transform = `rotate(${rotate}deg) scaleX(${flipH}) scaleY(${flipY})`;
-  preview.style.filter = `brightness(${brightness}%) saturate(${saturation}%) invert(${inversion}%) grayscale(${grayscale}%) `;
+  preview.style.filter = `brightness(${brightness}%) saturate(${saturation}%) invert(${inversion}%) grayscale(${grayscale}%) opacity(${opacity}%) contrast(${contrast}%) hue-rotate(${hue}deg) sepia(${sepia}%)`;
 };
 
 filter.forEach((option) => {
@@ -69,6 +73,22 @@ filter.forEach((option) => {
       filterSlider.max = "100";
       filterSlider.value = inversion;
       filterNum.innerText = `${inversion}%`;
+    } else if (option.id === "Opacity") {
+      filterSlider.max = "100";
+      filterSlider.value = opacity;
+      filterNum.innerText = `${opacity}%`;
+    } else if (option.id === "Contrast") {
+      filterSlider.max = "200";
+      filterSlider.value = contrast;
+      filterNum.innerText = `${contrast}%`;
+    } else if (option.id === "Hue") {
+      filterSlider.max = "100";
+      filterSlider.value = hue;
+      filterNum.innerText = `${hue}%`;
+    } else if (option.id === "Sepia") {
+      filterSlider.max = "100";
+      filterSlider.value = sepia;
+      filterNum.innerText = `${sepia}%`;
     } else {
       filterSlider.max = "100";
       filterSlider.value = grayscale;
@@ -84,6 +104,14 @@ const updateFilter = () => {
     saturation = filterSlider.value;
   } else if (selectedFilter.id === "Inversion") {
     inversion = filterSlider.value;
+  } else if (selectedFilter.id === "Opacity") {
+    opacity = filterSlider.value;
+  } else if (selectedFilter.id === "Contrast") {
+    contrast = filterSlider.value;
+  } else if (selectedFilter.id === "Hue") {
+    hue = filterSlider.value;
+  } else if (selectedFilter.id === "Sepia") {
+    sepia = filterSlider.value;
   } else {
     grayscale = filterSlider.value;
   }
@@ -91,10 +119,14 @@ const updateFilter = () => {
   applyFilters();
 };
 reset.addEventListener("click", () => {
-  brightness = "100";
-  saturation = "100";
-  inversion = "0";
-  grayscale = "0";
+  (brightness = 100),
+    (saturation = 100),
+    (inversion = 0),
+    (opacity = 0),
+    (contrast = 100),
+    (hue = 0),
+    (sepia = 0),
+    (grayscale = 0);
   rotate = 0;
   flipH = 1;
   flipY = 1;
@@ -115,6 +147,22 @@ reset.addEventListener("click", () => {
     case "Grayscale":
       filterSlider.value = grayscale;
       filterNum.innerHTML = grayscale + "%";
+      break;
+    case "Contrast":
+      filterSlider.value = contrast;
+      filterNum.innerHTML = contrast + "%";
+      break;
+    case "Opacity":
+      filterSlider.value = opacity;
+      filterNum.innerHTML = opacity + "%";
+      break;
+    case "Hue":
+      filterSlider.value = hue;
+      filterNum.innerHTML = hue + "%";
+      break;
+    case "Sepia":
+      filterSlider.value = sepia;
+      filterNum.innerHTML = sepia + "%";
       break;
 
     default:
