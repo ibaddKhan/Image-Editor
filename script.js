@@ -33,17 +33,9 @@ const loadImg = () => {
 };
 preview.addEventListener("dragover", (e) => {
   e.preventDefault();
-  preview.classList.add("dragover");
 });
-
-preview.addEventListener("dragleave", (e) => {
-  e.preventDefault();
-  preview.classList.remove("dragover");
-});
-
 preview.addEventListener("drop", (e) => {
   e.preventDefault();
-  preview.classList.remove("dragover");
   const file = e.dataTransfer.files[0];
   if (file) {
     fileInput.files = e.dataTransfer.files;
