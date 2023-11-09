@@ -15,7 +15,7 @@
     />
   </head>
   <body>
-    <div class="container">
+    <div class="container disable">
       <h2 class="heading">Photo Editor By me</h2>
       <div class="main">
         <div class="panel">
@@ -30,7 +30,7 @@
             <div class="slider">
               <div class="filter-info">
                 <p class="name">Brightness</p>
-                <p class="value">100<span>%</span></p>
+                <p class="value">0<span>%</span></p>
               </div>
               <input class="range" type="range" value="100" min="0" max="200" />
             </div>
@@ -38,10 +38,16 @@
           <div class="rotate">
             <label class="title">Rotate & Flip</label>
             <div class="options">
-              <button><i class="fa-solid fa-rotate-left"></i></button>
-              <button><i class="fa-solid fa-rotate-right"></i></button>
-              <button><i class="bx bx-reflect-vertical"></i></button>
-              <button><i class="bx bx-reflect-horizontal"></i></button>
+              <button id="left"><i class="fa-solid fa-rotate-left"></i></button>
+              <button id="right">
+                <i class="fa-solid fa-rotate-right"></i>
+              </button>
+              <button id="vertical">
+                <i class="bx bx-reflect-vertical"></i>
+              </button>
+              <button id="horizontal">
+                <i class="bx bx-reflect-horizontal"></i>
+              </button>
             </div>
           </div>
         </div>
