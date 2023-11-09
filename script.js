@@ -1,7 +1,6 @@
 const fileInput = document.querySelector(".file-input");
 const selectBtn = document.querySelector(".select");
 const preview = document.querySelector(".preview img");
-const previeww = document.querySelector(".preview");
 const container = document.querySelector(".container");
 const filter = document.querySelectorAll(".options button");
 const RotateBtn = document.querySelectorAll(".rotate button");
@@ -32,8 +31,27 @@ const loadImg = () => {
     container.classList.remove("disable");
   });
 };
+preview.addEventListener("dragover", (e) => {
+  e.preventDefault();
+  preview.classList.add("dragover");
+});
 
-previeww.addEventListener("click", () => {
+preview.addEventListener("dragleave", (e) => {
+  e.preventDefault();
+  preview.classList.remove("dragover");
+});
+
+preview.addEventListener("drop", (e) => {
+  e.preventDefault();
+  preview.classList.remove("dragover");
+  const file = e.dataTransfer.files[0];
+  if (file) {
+    fileInput.files = e.dataTransfer.files;
+    loadImg();
+  }
+});
+
+preview.addEventListener("click", () => {
   fileInput.click();
 });
 const applyFilters = () => {
