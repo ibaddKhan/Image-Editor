@@ -1,22 +1,25 @@
 const fileInput = document.querySelector(".file-input");
 const selectBtn = document.querySelector(".select");
 const preview = document.querySelector(".preview img");
+const previeww = document.querySelector(".preview");
 const container = document.querySelector(".container");
 const filter = document.querySelectorAll(".options button");
 const RotateBtn = document.querySelectorAll(".rotate button");
 const filterName = document.querySelector(".filter-info .name");
 const filterNum = document.querySelector(".value");
 const filterSlider = document.querySelector(".slider .range");
+const reset = document.querySelector(".controls .reset");
+const image = document.querySelector(".image-d");
 let selectedFilter = document.querySelector(".options .active");
 
 let brightness = 100,
   saturation = 100,
   inversion = 0,
   grayscale = 0;
+rotate = 0;
+flipH = 1;
+flipY = 1;
 
-let rotate = 0;
-let = flipH = 1;
-let = flipY = 1;
 const loadImg = () => {
   let file = fileInput.files[0];
   if (!file) {
@@ -28,6 +31,10 @@ const loadImg = () => {
     container.classList.remove("disable");
   });
 };
+
+previeww.addEventListener("click", () => {
+  fileInput.click();
+});
 const applyFilters = () => {
   preview.style.transform = `rotate(${rotate}deg) scaleX(${flipH}) scaleY(${flipY})`;
   preview.style.filter = `brightness(${brightness}%) saturate(${saturation}%) invert(${inversion}%) grayscale(${grayscale}%) `;
@@ -69,8 +76,41 @@ const updateFilter = () => {
   } else {
     grayscale = filterSlider.value;
   }
+
   applyFilters();
 };
+reset.addEventListener("click", () => {
+  brightness = "100";
+  saturation = "100";
+  inversion = "0";
+  grayscale = "0";
+  rotate = 0;
+  flipH = 1;
+  flipY = 1;
+  switch (selectedFilter.id) {
+    case "Brightness":
+      filterSlider.value = brightness;
+      filterNum.innerHTML = brightness + "%";
+      break;
+    case "Saturation":
+      filterSlider.value = saturation;
+      filterNum.innerHTML = saturation + "%";
+      break;
+    case "Inversion":
+      filterSlider.value = inversion;
+
+      filterNum.innerHTML = inversion + "%";
+      break;
+    case "Grayscale":
+      filterSlider.value = grayscale;
+      filterNum.innerHTML = grayscale + "%";
+      break;
+
+    default:
+      break;
+  }
+  applyFilters();
+});
 
 RotateBtn.forEach((item) => {
   item.addEventListener("click", () => {
@@ -86,10 +126,12 @@ RotateBtn.forEach((item) => {
         rotate += 90;
         break;
       case "vertical":
+        // console.log("Vertical");
         flipY = flipY === 1 ? -1 : 1;
         break;
       case "horizontal":
-        flipH = flipH === 1 ? -1 : 1; // console.log("horizontal");
+        // console.log("horizontal");
+        flipH = flipH === 1 ? -1 : 1;
         break;
 
       default:

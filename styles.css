@@ -109,6 +109,9 @@ button {
   align-items: center;
   justify-content: center;
 }
+.preview {
+  cursor: pointer;
+}
 .preview img {
   max-width: 500px;
   max-height: 425px;
