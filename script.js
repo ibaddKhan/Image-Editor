@@ -206,7 +206,7 @@ const saveImage = () => {
   canvas.width = preview.naturalWidth;
   canvas.height = preview.naturalHeight;
 
-  ctx.filter = `brightness(${brightness}%) saturate(${saturation}%) invert(${inversion}%) grayscale(${grayscale}%)`;
+  ctx.filter = `brightness(${brightness}%) saturate(${saturation}%) invert(${inversion}%) grayscale(${grayscale}%)  opacity(${opacity}%) contrast(${contrast}%) hue-rotate(${hue}deg) sepia(${sepia}%)`;
   ctx.translate(canvas.width / 2, canvas.height / 2);
   if (rotate !== 0) {
     ctx.rotate((rotate * Math.PI) / 180);
